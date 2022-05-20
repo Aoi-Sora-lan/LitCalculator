@@ -1,0 +1,2 @@
+# LitCalculator
+Just a Homework
