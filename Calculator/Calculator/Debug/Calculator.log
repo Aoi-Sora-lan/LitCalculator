@@ -1,0 +1,5 @@
+﻿  Inputer.cpp
+D:\ProjectItems\C++Items\LitCalculator\Calculator\Calculator\Toolkit.h(24,2): warning C4091: “static ”: 没有声明变量时忽略“Toolkit”的左侧
+D:\ProjectItems\C++Items\LitCalculator\Calculator\Calculator\Inputer.cpp(9,8): warning C4101: “temp”: 未引用的局部变量
+D:\ProjectItems\C++Items\LitCalculator\Calculator\Calculator\Inputer.cpp(20,11): warning C4101: “temp”: 未引用的局部变量
+  Calculator.vcxproj -> D:\ProjectItems\C++Items\LitCalculator\Calculator\Debug\Calculator.exe
