@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Inputer.cpp" />
+    <ClCompile Include="Manager.cpp" />
     <ClCompile Include="StrategyPattern.cpp" />
     <ClCompile Include="Drawer.cpp" />
     <ClCompile Include="MainSource.cpp" />
@@ -147,6 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Inputer.h" />
+    <ClInclude Include="Manager.h" />
     <ClInclude Include="StrategyPattern.h" />
     <ClInclude Include="Drawer.h" />
     <ClInclude Include="Toolkit.h" />

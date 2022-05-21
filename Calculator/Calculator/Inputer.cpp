@@ -12,7 +12,6 @@ DataPack* Inputer::InputPack(int length, TypeOfData type)
 				UniData data;
 				cin >> data.Integer;
 				inputerRam[i] = Toolkit::GenPack(data, TypeOfData::Integer);
-				cout << "-3-";
 			}
 		}
 		else
@@ -23,9 +22,13 @@ DataPack* Inputer::InputPack(int length, TypeOfData type)
 				UniData data;
 				cin >> data.Double;
 				inputerRam[i]=Toolkit::GenPack(data, TypeOfData::Double);
-				cout << "o3o";
 			}
 		}
 	}
 	return inputerRam;
+}
+
+DataPack* Inputer::InputPack(InputInfo info)
+{
+	return InputPack(info.length, info.type);
 }

@@ -6,9 +6,9 @@ using namespace std;
 int main()
 {
 	Inputer inputer;
-	Addition a;
+	Division a;
 	DataPack* b;
-	b=inputer.InputPack(2, TypeOfData::Integer);
+	b=inputer.InputPack(a.GetInputInfo());
 	a.Calulate(b);
 	a.Show();
 }
