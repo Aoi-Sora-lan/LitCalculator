@@ -206,6 +206,7 @@ public:
 		inputInfo = { 1,TypeOfData::Integer };
 	}
 };
+
 /// <summary>
 /// 求圆面积策略
 /// </summary>
@@ -231,6 +232,7 @@ public:
 		inputInfo = { 1,TypeOfData::Double };
 	}
 };
+
 /// <summary>
 /// 判断闰年策略
 /// </summary>
@@ -260,6 +262,7 @@ public:
 		inputInfo = { 1,TypeOfData::Integer };
 	}
 };
+
 /// <summary>
 /// 成绩转换策略
 /// </summary>
@@ -302,3 +305,186 @@ public:
 		inputInfo = { 1,TypeOfData::Integer };
 	}
 };
+
+/// <summary>
+/// 计算奇数和策略
+/// </summary>
+class OddAddition : public AStrategyPattern
+{
+public:
+	void Calulate(DataPack* datapack)
+	{
+		UniData data;
+		int end = datapack->Data.Integer;
+		int sum = 0;
+		for (int i = 1; i <= end; i++)
+		{
+			if (i % 2 == 1) sum += i;
+		}
+		int packInt = sum;
+		data.Integer = packInt;
+		ramDataPack[0] = Toolkit::GenPack(data, TypeOfData::Integer);
+	}
+	void Show()
+	{
+		int num = ramDataPack[0].Data.Integer;
+		printf("1到该数之间所有奇数和为%d\n",num);
+	}
+	OddAddition()
+	{
+		inputInfo = { 1,TypeOfData::Integer };
+	}
+};
+
+/// <summary>
+/// 计算偶数和策略
+/// </summary>
+class EvenAddition : public AStrategyPattern
+{
+public:
+	void Calulate(DataPack* datapack)
+	{
+		UniData data;
+		int end = datapack->Data.Integer;
+		int i=0,sum = 0;
+		while(++i<=end)
+		{
+			if (i % 2 == 0) sum += i;
+		}
+		int packInt = sum;
+		data.Integer = packInt;
+		ramDataPack[0] = Toolkit::GenPack(data, TypeOfData::Integer);
+	}
+	void Show()
+	{
+		int num = ramDataPack[0].Data.Integer;
+		printf("1到该数之间所有偶数和为%d\n", num);
+	}
+	EvenAddition()
+	{
+		inputInfo = { 1,TypeOfData::Integer };
+	}
+};
+
+/// <summary>
+/// 计算偶数和策略
+/// </summary>
+class TriCount : public AStrategyPattern
+{
+public:
+	void Calulate(DataPack* datapack)
+	{
+		UniData data;
+		int cnt = 1;
+		int end = datapack->Data.Integer;
+		int i = 1;
+		do
+		{
+			if (i % 3 == 0)
+			{
+				data.Integer = i;
+				ramDataPack[cnt++] = Toolkit::GenPack(data, TypeOfData::Integer);
+			}
+			i++;
+		} while (i <= end);
+		data.Integer = cnt-1;
+		ramDataPack[0] = Toolkit::GenPack(data, TypeOfData::Integer);
+		
+	}
+	void Show()
+	{
+		int cnt = ramDataPack[0].Data.Integer;
+		if (cnt > 0)
+		{
+			printf("1到输入数之间所有3的倍数有：");
+			for (int i = 0; i < cnt; i++)
+			{
+				cout << ramDataPack[i + 1].Data.Integer << " ";
+			}
+			cout << endl;
+		}
+		else
+		{
+			printf("1到输入数之间没有3的倍数\n");
+		}
+	}
+	TriCount()
+	{
+		inputInfo = { 1,TypeOfData::Integer };
+	}
+};
+
+/// <summary>
+/// 计算Mod15策略
+/// </summary>
+class Mod15Is0 : public AStrategyPattern
+{
+public:
+	void Calulate(DataPack* datapack)
+	{
+		UniData data;
+		data.Integer = 1;
+		int start = datapack[0].Data.Integer;
+		int end = datapack[1].Data.Integer;
+		for (int i = start; i <= end; i++)
+		{
+			if (i % 15 == 0)
+			{
+				data.Integer = i; break;
+			}
+		}
+		ramDataPack[0]=Toolkit::GenPack(data,TypeOfData::Integer);
+	}
+	void Show()
+	{
+		if (ramDataPack->Data.Integer == 1) cout << "两个数之间没有既被3整除又被5整除的数";
+		else cout << "两个数之间第一个既被3整除又被5整除的数是：" << ramDataPack->Data.Integer;
+		cout << endl;
+	}
+	Mod15Is0()
+	{
+		inputInfo = { 2,TypeOfData::Integer };
+	}
+};
+
+/// <summary>
+/// 计算水仙花策略
+/// </summary>
+class WaterFlower : public AStrategyPattern
+{
+public:
+	void Calulate(DataPack* datapack)
+	{
+		UniData data;
+		int cnt = 1,jg;
+		for (int i = 100; i < 1000; i++)
+		{
+			string numstr = to_string(i);
+			jg = pow(numstr[0] - '0', 3) + pow(numstr[1] - '0', 3) + pow(numstr[2] - '0', 3);
+			if (i == jg)
+			{
+				data.Integer = i;
+				ramDataPack[cnt++]=Toolkit::GenPack(data,TypeOfData::Integer);
+			}
+		}
+		ramDataPack[0] = Toolkit::GenPack(data, TypeOfData::Integer);
+	}
+	void Show()
+	{
+		int cnt = ramDataPack[0].Data.Integer - 1;
+		if (cnt > 0)
+		{
+			printf("水仙花数有：");
+			for (int i = 0; i < cnt; i++)
+			{
+				cout << ramDataPack[i + 1].Data.Integer << " ";
+			}
+		}
+		cout << endl;
+	}
+	WaterFlower()
+	{
+		inputInfo = { 0,TypeOfData::Integer };
+	}
+};
+

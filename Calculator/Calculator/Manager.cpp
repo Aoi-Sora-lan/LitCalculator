@@ -36,6 +36,66 @@ void Manager::DealStrategy(CalculateType kind)
 		strategy = new ScoreTrans();
 		break;
 	}
+	case CalculateType::OddAddition: {
+		strategy = new OddAddition();
+		break;
+	}
+	case CalculateType::EvenAddition: {
+		strategy = new EvenAddition();
+		break;
+	}
+	case CalculateType::TriCount: {
+		strategy = new TriCount();
+		break;
+	}
+	case CalculateType::Mod15Is0: {
+		strategy = new Mod15Is0();
+		break;
+	}
+	case CalculateType::WaterFlower: {
+		strategy = new WaterFlower();
+		break;
+	}
+	case CalculateType::GetMax: {
+		strategy = new TriCount();
+		break;
+	}
+	case CalculateType::GetMaxMin: {
+		strategy = new TriCount();
+		break;
+	}
+	case CalculateType::BubbleSort: {
+		strategy = new TriCount();
+		break;
+	}
+	case CalculateType::MatrixTrans: {
+		strategy = new TriCount();
+		break;
+	}
+	case CalculateType::MatrixAdd: {
+		strategy = new TriCount();
+		break;
+	}
+	case CalculateType::WordCount: {
+		strategy = new TriCount();
+		break;
+	}
+	case CalculateType::StaticChain: {
+		strategy = new TriCount();
+		break;
+	}
+	case CalculateType::DynamicChain: {
+		strategy = new TriCount();
+		break;
+	}
+	case CalculateType::StudentSort: {
+		strategy = new TriCount();
+		break;
+	}
+	case CalculateType::StudentUp: {
+		strategy = new TriCount();
+		break;
+	}
 	default:
 		break;
 	}
