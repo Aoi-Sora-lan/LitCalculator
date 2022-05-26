@@ -1,5 +1,10 @@
 #include "Inputer.h"
-
+/// <summary>
+/// 输入包
+/// </summary>
+/// <param name="length">输入包长度</param>
+/// <param name="type">输入包类型</param>
+/// <returns></returns>
 DataPack* Inputer::InputPack(int length, TypeOfData type)
 {
 	if (type == TypeOfData::Integer || type == TypeOfData::Double)
