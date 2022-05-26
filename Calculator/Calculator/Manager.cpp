@@ -57,11 +57,11 @@ void Manager::DealStrategy(CalculateType kind)
 		break;
 	}
 	case CalculateType::GetMax: {
-		strategy = new TriCount();
+		strategy = new GetMax();
 		break;
 	}
 	case CalculateType::GetMaxMin: {
-		strategy = new TriCount();
+		strategy = new GetMaxMin();
 		break;
 	}
 	case CalculateType::BubbleSort: {

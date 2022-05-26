@@ -1,5 +1,6 @@
 #pragma once
 using namespace std;
+
 enum class CalculateType
 {
 	/// <summary>
@@ -108,5 +109,6 @@ static class Toolkit
 {
 public:
 	static DataPack GenPack(UniData,TypeOfData);
+	static bool SetMaxmin(int*, int*);
 };
 

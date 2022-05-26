@@ -456,6 +456,7 @@ public:
 	void Calulate(DataPack* datapack)
 	{
 		UniData data;
+		data.Error = ErrorType::NULLERROR;
 		int cnt = 1,jg;
 		for (int i = 100; i < 1000; i++)
 		{
@@ -488,3 +489,90 @@ public:
 	}
 };
 
+/// <summary>
+/// 计算最大值策略
+/// </summary>
+class GetMax : public AStrategyPattern
+{
+public:
+	void Calulate(DataPack* datapack)
+	{
+		UniData data;
+		if (datapack[0].Data.Integer == datapack[1].Data.Integer)
+		{
+			data.Boolean = false;
+			ramDataPack[0] = Toolkit::GenPack(data, TypeOfData::Boolean);
+		}
+		else
+		{
+			data.Boolean = true;
+			ramDataPack[0] = Toolkit::GenPack(data, TypeOfData::Boolean);
+			if (datapack[0].Data.Integer > datapack[1].Data.Integer) data.Integer = datapack[0].Data.Integer;
+			else data.Integer = datapack[1].Data.Integer;
+			ramDataPack[1] = Toolkit::GenPack(data, TypeOfData::Integer);
+		}
+		
+	}
+	void Show()
+	{
+		if (ramDataPack[0].Data.Boolean)
+		{
+			cout<<"两个数较大的是"<<ramDataPack[1].Data.Integer<<endl;
+		}
+		else 
+		{
+			cout << "两个数相等" << endl;
+		}
+	}
+	GetMax()
+	{
+		inputInfo = { 2,TypeOfData::Integer };
+	}
+};
+
+/// <summary>
+/// 计算最大最小值策略
+/// </summary>
+class GetMaxMin : public AStrategyPattern
+{
+public:
+	void Calulate(DataPack* datapack)
+	{
+		UniData data;
+		int a = datapack[0].Data.Integer;
+		int b = datapack[1].Data.Integer;
+		if (!Toolkit::SetMaxmin(&a, &b))
+		{
+			data.Boolean = false;
+			ramDataPack[0] = Toolkit::GenPack(data, TypeOfData::Boolean);
+		}
+		else
+		{
+			data.Boolean = true;
+			ramDataPack[0] = Toolkit::GenPack(data, TypeOfData::Boolean);
+			data.Integer = a;
+			ramDataPack[1] = Toolkit::GenPack(data, TypeOfData::Integer);
+			data.Integer = b;
+			ramDataPack[2] = Toolkit::GenPack(data, TypeOfData::Integer);
+		}
+
+	}
+	void Show()
+	{
+		if (ramDataPack[0].Data.Boolean)
+		{
+			cout << "两个数较大的是" << ramDataPack[1].Data.Integer;
+			cout << endl;
+			cout << "两个数较小的是" << ramDataPack[2].Data.Integer;
+			cout << endl;
+		}
+		else
+		{
+			cout << "两个数相等" << endl;
+		}
+	}
+	GetMaxMin()
+	{
+		inputInfo = { 2,TypeOfData::Integer };
+	}
+};
