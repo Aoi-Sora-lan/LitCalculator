@@ -24,7 +24,7 @@ public:
 	virtual void Show() = 0;
 	void QuickDeal();
 protected:
-	DataPack* ramDataPack = new DataPack[10];
+	DataPack* ramDataPack = new DataPack[25565];
 	InputInfo inputInfo;
 };
 
@@ -574,5 +574,157 @@ public:
 	GetMaxMin()
 	{
 		inputInfo = { 2,TypeOfData::Integer };
+	}
+};
+
+/// <summary>
+/// 冒泡排序策略
+/// </summary>
+class BubbleSort : public AStrategyPattern
+{
+public:
+	void Calulate(DataPack* datapack)
+	{
+		UniData data;
+		int nums[10],temp;
+		for (int i = 0; i <10 ; i++)
+		{
+			nums[i] = datapack[i].Data.Integer;
+		}
+		for (int i = 0; i < 10; i++)
+		{
+			for (int j = i + 1; j < 10; j++)
+			{
+				if (nums[i] < nums[j])
+				{
+					temp = nums[i];
+					nums[i] = nums[j];
+					nums[j] = temp;
+				}
+			}
+		}
+		for (int i = 0; i < 10; i++)
+		{
+			data.Integer = nums[i];
+			ramDataPack[i] = Toolkit::GenPack(data, TypeOfData::Integer);
+		}
+	}
+	void Show()
+	{
+		cout << "排序结果为：" << endl;
+		for (int i = 0; i < 10; i++)
+		{
+			cout<<ramDataPack[i].Data.Integer << " ";
+		}
+		cout << endl;
+	}
+	BubbleSort()
+	{
+		inputInfo = { 10,TypeOfData::Integer };
+	}
+};
+
+/// <summary>
+/// 矩阵转置策略
+/// </summary>
+class MatrixTrans : public AStrategyPattern
+{
+public:
+	void Calulate(DataPack* datapack)
+	{
+		UniData data;
+		int nums[12],aftnums[12], cnt=0;
+		for (int i = 0; i < 12; i++)
+		{
+			nums[i] = datapack[i].Data.Integer;
+		}
+		for (int i = 0; i < 3; i++)
+		{
+			for (int j = 0; j < 4; j++)
+			{
+				aftnums[cnt++] = nums[i + 3 * j];
+			}
+		}
+		for (int i = 0; i < 12; i++)
+		{
+			data.Integer = aftnums[i];
+			ramDataPack[i] = Toolkit::GenPack(data, TypeOfData::Integer);
+		}
+	}
+	void Show()
+	{
+		cout << "转置后矩阵为：" << endl;
+		for (int i = 0; i < 12; i++)
+		{
+			cout << ramDataPack[i].Data.Integer << " ";
+			if(i%4==3) cout << endl;
+		}
+	}
+	MatrixTrans()
+	{
+		inputInfo = { 12,TypeOfData::Integer };
+	}
+};
+
+/// <summary>
+/// 矩阵对角线求和策略
+/// </summary>
+class MatrixAdd : public AStrategyPattern
+{
+public:
+	void Calulate(DataPack* datapack)
+	{
+		UniData data;
+		int cnt = 0;
+		for (int i = 0; i < 9; i++)
+		{
+			if (i % 4 == 0) cnt += datapack[i].Data.Integer;
+		}
+		data.Integer = cnt;
+		ramDataPack[0] = Toolkit::GenPack(data, TypeOfData::Integer);
+	}
+	void Show()
+	{
+		cout << "矩阵的迹为："<<ramDataPack[0].Data.Integer << endl;
+	}
+	MatrixAdd()
+	{
+		inputInfo = { 9,TypeOfData::Integer };
+	}
+};
+
+/// <summary>
+/// 统计单词个数策略
+/// </summary>
+class WordCount : public AStrategyPattern
+{
+public:
+	void Calulate(DataPack* datapack)
+	{
+		int cnt = 0;
+		bool before = false;
+		for (int i = 0; datapack[0].Data.Characters[i] != '\0'; i++)
+		{
+			if (!before&&datapack[0].Data.Characters[i] != ' ')
+			{
+				cnt++;
+				before = true;
+			}
+			if (before && datapack[0].Data.Characters[i] == ' ')
+			{
+				before = false;
+			}
+		}
+		UniData data;
+		data.Integer = cnt;
+		ramDataPack[0] = Toolkit::GenPack(data, TypeOfData::Integer);
+	}
+	void Show()
+	{
+		cout << "单词个数为：" << ramDataPack[0].Data.Integer << endl;
+	}
+	WordCount()
+	{
+		inputInfo = { 0,TypeOfData::Characters };
 	}
 };

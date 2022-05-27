@@ -78,7 +78,7 @@ enum class CalculateType
 union UniData
 {
 	int Integer;
-	char Characters[50];
+	char Characters[255];
 	double Double;
 	int Error;
 	bool Boolean;

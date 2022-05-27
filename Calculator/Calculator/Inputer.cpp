@@ -1,4 +1,5 @@
 #include "Inputer.h"
+#include <string>
 /// <summary>
 /// ÊäÈë°ü
 /// </summary>
@@ -29,6 +30,19 @@ DataPack* Inputer::InputPack(int length, TypeOfData type)
 				inputerRam[i]=Toolkit::GenPack(data, TypeOfData::Double);
 			}
 		}
+	}
+	else
+	{
+		string str;
+		UniData data{};
+		cin.ignore();
+		getline(cin, str);
+		int len = str.length();
+		for (int i = 0; i < len; i++)
+		{
+			data.Characters[i] = str[i];
+		}
+		inputerRam[0] = Toolkit::GenPack(data, TypeOfData::Characters);
 	}
 	return inputerRam;
 }

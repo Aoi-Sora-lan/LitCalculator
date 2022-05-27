@@ -65,19 +65,19 @@ void Manager::DealStrategy(CalculateType kind)
 		break;
 	}
 	case CalculateType::BubbleSort: {
-		strategy = new TriCount();
+		strategy = new BubbleSort();
 		break;
 	}
 	case CalculateType::MatrixTrans: {
-		strategy = new TriCount();
+		strategy = new MatrixTrans();
 		break;
 	}
 	case CalculateType::MatrixAdd: {
-		strategy = new TriCount();
+		strategy = new MatrixAdd();
 		break;
 	}
 	case CalculateType::WordCount: {
-		strategy = new TriCount();
+		strategy = new WordCount();
 		break;
 	}
 	case CalculateType::StaticChain: {
