@@ -81,11 +81,11 @@ void Manager::DealStrategy(CalculateType kind)
 		break;
 	}
 	case CalculateType::StaticChain: {
-		strategy = new TriCount();
+		strategy = new StaticChain();
 		break;
 	}
 	case CalculateType::DynamicChain: {
-		strategy = new TriCount();
+		strategy = new DynamicChain();
 		break;
 	}
 	case CalculateType::StudentSort: {

@@ -728,3 +728,77 @@ public:
 		inputInfo = { 0,TypeOfData::Characters };
 	}
 };
+
+/// <summary>
+/// 建立静态链表策略
+/// </summary>
+class StaticChain : public AStrategyPattern
+{
+public:
+	void Calulate(DataPack* datapack)
+	{
+		Node* node = new Node[4]{1,2,3,4};
+		for (int i = 0; i < 3; i++)
+		{
+			node[i].NextNode = node+i+1;
+		}
+		UniData data;
+		data.StartNode = node;
+		ramDataPack[0] = Toolkit::GenPack(data, TypeOfData::Addrress);
+	}
+	void Show()
+	{
+		Node* StartNode = (Node*)ramDataPack[0].Data.StartNode;
+		Node* NextNode = StartNode;
+		cout << "链表有：" << endl;
+		for (int i = 0; i < 4; i++)
+		{
+			cout<< NextNode->Data<<" ";
+			NextNode = NextNode->NextNode;
+		}
+		cout << endl;
+	}
+	StaticChain()
+	{
+		inputInfo = { 0,TypeOfData::Empty };
+	}
+};
+
+
+/// <summary>
+/// 建立动态链表策略
+/// </summary>
+class DynamicChain : public AStrategyPattern
+{
+public:
+	void Calulate(DataPack* datapack)
+	{
+		Node* StartNode = new Node(-1);
+		Node* NowNode = StartNode;
+		for (int i = 0; datapack[i].Data.Integer!= -1; i++)
+		{
+			NowNode->NextNode = new Node(datapack[i].Data.Integer);
+			NowNode = NowNode->NextNode;
+		}
+		UniData data;
+		data.StartNode = StartNode;
+		ramDataPack[0] = Toolkit::GenPack(data, TypeOfData::Addrress);
+	}
+	void Show()
+	{
+		Node* StartNode = (Node*)ramDataPack[0].Data.StartNode;
+		Node* NextNode = StartNode->NextNode;
+		cout << "链表有：" << endl;
+		for (int i = 0;NextNode->Data!=-1; i++)
+		{
+			cout << NextNode->Data << " ";
+			if (NextNode->NextNode == NULL) break;
+			NextNode = NextNode->NextNode;
+		}
+		cout << endl;
+	}
+	DynamicChain()
+	{
+		inputInfo = { -1,TypeOfData::Integer };
+	}
+};

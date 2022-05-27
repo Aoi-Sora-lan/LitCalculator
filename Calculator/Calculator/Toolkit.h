@@ -1,6 +1,16 @@
 #pragma once
+#include<iostream>
 using namespace std;
-
+struct Node 
+{
+	int Data;
+	Node* NextNode;
+	Node(int x) :Data(x), NextNode(NULL) {}
+};
+struct LinkedList 
+{
+	Node HeadNode;
+};
 enum class CalculateType
 {
 	/// <summary>
@@ -82,6 +92,7 @@ union UniData
 	double Double;
 	int Error;
 	bool Boolean;
+	void* StartNode;
 };
 enum class TypeOfData
 {
@@ -89,7 +100,9 @@ enum class TypeOfData
 	Characters,
 	Double,
 	ERROR,
-	Boolean
+	Boolean,
+	Addrress,
+	Empty
 };
 static class ErrorType
 {

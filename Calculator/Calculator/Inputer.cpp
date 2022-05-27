@@ -12,12 +12,26 @@ DataPack* Inputer::InputPack(int length, TypeOfData type)
 	{
 		if(type==TypeOfData::Integer)
 		{
-			int temp;
-			for (int i = 0; i < length; i++)
+			if (length == -1)
 			{
+				int num=0,cnt=0;
 				UniData data;
-				cin >> data.Integer;
-				inputerRam[i] = Toolkit::GenPack(data, TypeOfData::Integer);
+				while (num >= 0)
+				{
+					cin >> num;
+					data.Integer = num;
+					inputerRam[cnt++] = Toolkit::GenPack(data, TypeOfData::Integer);
+				}
+			}
+			else
+			{
+				int temp;
+				for (int i = 0; i < length; i++)
+				{
+					UniData data;
+					cin >> data.Integer;
+					inputerRam[i] = Toolkit::GenPack(data, TypeOfData::Integer);
+				}
 			}
 		}
 		else
@@ -31,7 +45,7 @@ DataPack* Inputer::InputPack(int length, TypeOfData type)
 			}
 		}
 	}
-	else
+	else if(type==TypeOfData::Characters)
 	{
 		string str;
 		UniData data{};
