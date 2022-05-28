@@ -110,21 +110,21 @@ enum class TypeOfData
 	Address,
 	Empty
 };
-static class ErrorType
+class ErrorType
 {
 public:
-	 const static int NULLERROR = 0;
-	 const static int TOMUCHINPUT = 1;
-	 const static int NOTPOSTIVE = 2;
-	 const static int MATHERROR = 3;
-	 const static int UNMEANINGFUL = 4;
+	 static const int NULLERROR;
+	 static const int TOMUCHINPUT;
+	 static const int NOTPOSTIVE;
+	 static const int MATHERROR;
+	 static const int UNMEANINGFUL;
 };
 typedef struct
 {
 	UniData Data;
 	TypeOfData Type;
 }DataPack;
-static class Toolkit
+class Toolkit
 {
 public:
 	static DataPack GenPack(UniData,TypeOfData);

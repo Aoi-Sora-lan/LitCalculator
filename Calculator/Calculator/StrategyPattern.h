@@ -469,6 +469,7 @@ public:
 				ramDataPack[cnt++]=Toolkit::GenPack(data,TypeOfData::Integer);
 			}
 		}
+		data.Integer = cnt;
 		ramDataPack[0] = Toolkit::GenPack(data, TypeOfData::Integer);
 	}
 	void Show()
