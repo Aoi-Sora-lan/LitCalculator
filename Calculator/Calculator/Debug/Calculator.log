@@ -1,19 +1,5 @@
-﻿  Inputer.cpp
-D:\ProjectItems\C++Items\LitCalculator\Calculator\Calculator\Toolkit.h(121,2): warning C4091: “static ”: 没有声明变量时忽略“ErrorType”的左侧
-D:\ProjectItems\C++Items\LitCalculator\Calculator\Calculator\Toolkit.h(132,2): warning C4091: “static ”: 没有声明变量时忽略“Toolkit”的左侧
-D:\ProjectItems\C++Items\LitCalculator\Calculator\Calculator\Inputer.cpp(28,9): warning C4101: “temp”: 未引用的局部变量
-D:\ProjectItems\C++Items\LitCalculator\Calculator\Calculator\Inputer.cpp(39,11): warning C4101: “temp”: 未引用的局部变量
-  MainSource.cpp
+﻿  MainSource.cpp
 D:\ProjectItems\C++Items\LitCalculator\Calculator\Calculator\Toolkit.h(121,2): warning C4091: “static ”: 没有声明变量时忽略“ErrorType”的左侧
 D:\ProjectItems\C++Items\LitCalculator\Calculator\Calculator\Toolkit.h(132,2): warning C4091: “static ”: 没有声明变量时忽略“Toolkit”的左侧
 D:\ProjectItems\C++Items\LitCalculator\Calculator\Calculator\StrategyPattern.h(465,59): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
-  Manager.cpp
-D:\ProjectItems\C++Items\LitCalculator\Calculator\Calculator\Toolkit.h(121,2): warning C4091: “static ”: 没有声明变量时忽略“ErrorType”的左侧
-D:\ProjectItems\C++Items\LitCalculator\Calculator\Calculator\Toolkit.h(132,2): warning C4091: “static ”: 没有声明变量时忽略“Toolkit”的左侧
-D:\ProjectItems\C++Items\LitCalculator\Calculator\Calculator\StrategyPattern.h(465,59): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
-  StrategyPattern.cpp
-D:\ProjectItems\C++Items\LitCalculator\Calculator\Calculator\Toolkit.h(121,2): warning C4091: “static ”: 没有声明变量时忽略“ErrorType”的左侧
-D:\ProjectItems\C++Items\LitCalculator\Calculator\Calculator\Toolkit.h(132,2): warning C4091: “static ”: 没有声明变量时忽略“Toolkit”的左侧
-D:\ProjectItems\C++Items\LitCalculator\Calculator\Calculator\StrategyPattern.h(465,59): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
-  正在生成代码...
   Calculator.vcxproj -> D:\ProjectItems\C++Items\LitCalculator\Calculator\Debug\Calculator.exe

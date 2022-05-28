@@ -93,7 +93,7 @@ void Manager::DealStrategy(CalculateType kind)
 		break;
 	}
 	case CalculateType::StudentUp: {
-		strategy = new TriCount();
+		strategy = new StudentUp();
 		break;
 	}
 	default:

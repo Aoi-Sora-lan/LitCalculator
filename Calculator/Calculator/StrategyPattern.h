@@ -26,7 +26,7 @@ public:
 	void QuickDeal();
 protected:
 	DataPack* ramDataPack = new DataPack[25565];
-	InputInfo inputInfo;
+	InputInfo inputInfo = { 0};
 };
 
 /// <summary>
@@ -864,9 +864,9 @@ public:
 		}
 		cout << endl;
 		cout << setiosflags(ios::left);
-		cout << setw(maxleno + 1) << "学生学号" << "| "
-			<< setw(maxlenn + 1) << "学生姓名" << "| "
-			<< setw(maxlens + 1) << "学生分数" << endl;
+		cout << setw((long long)maxleno + 1) << "学生学号" << "| "
+			<< setw((long long)maxlenn + 1) << "学生姓名" << "| "
+			<< setw((long long)maxlens + 1) << "学生分数" << endl;
 		string Not="", Nat="", Sct="";
 		for (int i = 0; i <= maxleno; i++) Not += "-";
 		for (int i = 0; i <= maxlenn+1; i++) Nat += "-";
@@ -876,9 +876,9 @@ public:
 			<< Sct << endl;
 		for (int i = 0; i < n; i++)
 		{
-			cout <<setw(maxleno+1)<< students[i].No<<"| "
-				 <<setw(maxlenn+1)<<students[i].Name<<"| "
-				 <<setw(maxlens+1)<< students[i].Score << endl;
+			cout <<setw((long long)maxleno+1)<< students[i].No<<"| "
+				 <<setw((long long)maxlenn+1)<<students[i].Name<<"| "
+				 <<setw((long long)maxlens+1)<< students[i].Score << endl;
 		}
 		cout << endl;
 		cout << "学生总分为：" << ramDataPack[1].Data.Integer << endl;
@@ -887,5 +887,65 @@ public:
 	StudentSort()
 	{
 		inputInfo = { 10,TypeOfData::Address };
+	}
+};
+
+/// <summary>
+/// 学生分数增长策略
+/// </summary>
+class StudentUp : public AStrategyPattern
+{
+public:
+	void Calulate(DataPack* datapack)
+	{
+		FILE* fp;
+		errno_t err;
+		UniData data;
+		if((err=fopen_s(&fp,"d:\\my.txt", "r+")!=0))
+		{
+			data.Error = ErrorType::NULLERROR;
+			ramDataPack[0] = Toolkit::GenPack(data, TypeOfData::ERROR);
+		}
+		else
+		{
+			int nums[10];
+			//for(int i=0;i<)
+			int ram;
+			for(int i=0;i<10;i++)
+			{
+				fscanf_s(fp, "%d", (nums+i));
+				if(i!=9) ram=getc(fp);//吃掉0D0A
+			}
+			fseek(fp, 0, SEEK_SET);
+			for (int i = 0; i < 10; i++)
+			{
+				nums[i] += 10;
+				fprintf_s(fp, "%d\n", nums[i]);
+			}
+			fclose(fp);
+			data.Boolean = true;
+			ramDataPack[0] = Toolkit::GenPack(data, TypeOfData::Boolean);
+		}
+	}
+	void Show()
+	{
+		if (ramDataPack[0].Type == TypeOfData::ERROR)
+		{
+			if (ramDataPack[0].Data.Error == ErrorType::NULLERROR)
+			{
+				cout << "未找到文件" << endl;
+			}
+		}
+		else
+		{
+			if (ramDataPack->Data.Boolean)
+			{
+				cout << "成功！" << endl;
+			}
+		}
+	}
+	StudentUp()
+	{
+		inputInfo = { 0,TypeOfData::Empty };
 	}
 };

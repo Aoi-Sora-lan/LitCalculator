@@ -13,6 +13,6 @@ int main()
 	{
 		cin >> n;
 		if (n == 24) break;
-		manager.DealStrategy(n);
+		manager.DealStrategy(n-1);
 	}
 }
