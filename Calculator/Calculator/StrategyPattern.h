@@ -6,6 +6,7 @@
 #include<cstring>
 #include<string>
 #include<cmath>
+#include<iomanip>
 using namespace std;
 
 /// <summary>
@@ -743,12 +744,12 @@ public:
 			node[i].NextNode = node+i+1;
 		}
 		UniData data;
-		data.StartNode = node;
-		ramDataPack[0] = Toolkit::GenPack(data, TypeOfData::Addrress);
+		data.Address = node;
+		ramDataPack[0] = Toolkit::GenPack(data, TypeOfData::Address);
 	}
 	void Show()
 	{
-		Node* StartNode = (Node*)ramDataPack[0].Data.StartNode;
+		Node* StartNode = (Node*)ramDataPack[0].Data.Address;
 		Node* NextNode = StartNode;
 		cout << "链表有：" << endl;
 		for (int i = 0; i < 4; i++)
@@ -781,12 +782,12 @@ public:
 			NowNode = NowNode->NextNode;
 		}
 		UniData data;
-		data.StartNode = StartNode;
-		ramDataPack[0] = Toolkit::GenPack(data, TypeOfData::Addrress);
+		data.Address = StartNode;
+		ramDataPack[0] = Toolkit::GenPack(data, TypeOfData::Address);
 	}
 	void Show()
 	{
-		Node* StartNode = (Node*)ramDataPack[0].Data.StartNode;
+		Node* StartNode = (Node*)ramDataPack[0].Data.Address;
 		Node* NextNode = StartNode->NextNode;
 		cout << "链表有：" << endl;
 		for (int i = 0;NextNode->Data!=-1; i++)
@@ -800,5 +801,91 @@ public:
 	DynamicChain()
 	{
 		inputInfo = { -1,TypeOfData::Integer };
+	}
+};
+
+
+/// <summary>
+/// 学生排序策略
+/// </summary>
+class StudentSort : public AStrategyPattern
+{
+public:
+	void Calulate(DataPack* datapack)
+	{
+		int n = 10;
+		int sum = 0;
+		double avg;
+		Student* students = (Student*)(datapack->Data.Address);
+		Student temp;
+		for (int i = 0; i < n; i++)
+		{
+			sum += students[i].Score;
+		}
+		for (int i = 0; i < n; i++)
+		{
+			for(int j=i+1;j<n;j++)
+			{
+				if(students[i].Score>students[j].Score)
+				{
+					temp = students[i];
+					students[i] = students[j];
+					students[j] = temp;
+				}
+			}
+		}
+		UniData data;
+		data.Address = students;
+		ramDataPack[0] = Toolkit::GenPack(data, TypeOfData::Address);
+		data.Integer = sum;
+		ramDataPack[1] = Toolkit::GenPack(data, TypeOfData::Integer);
+		avg = (double)sum / 10.0;
+		data.Double = avg;
+		ramDataPack[2] = Toolkit::GenPack(data, TypeOfData::Double);
+	}
+	void Show()
+	{
+		int n = 10;
+		Student* students = (Student*)(ramDataPack->Data.Address);
+		int maxlenn = strlen("学生姓名");
+		int maxleno = strlen("学生学号");
+		int maxlens = strlen("学生分数");
+		for (int i = 0; i < n; i++)
+		{
+			maxlenn = max(maxlenn,(int)strlen(students[i].Name));
+		}
+		for (int i = 0; i < n; i++)
+		{
+			maxleno = max(maxleno, (int)to_string(students[i].No).length());
+		}
+		for (int i = 0; i < n; i++)
+		{
+			maxlens = max(maxlens, (int)to_string(students[i].Score).length());
+		}
+		cout << endl;
+		cout << setiosflags(ios::left);
+		cout << setw(maxleno + 1) << "学生学号" << "| "
+			<< setw(maxlenn + 1) << "学生姓名" << "| "
+			<< setw(maxlens + 1) << "学生分数" << endl;
+		string Not="", Nat="", Sct="";
+		for (int i = 0; i <= maxleno; i++) Not += "-";
+		for (int i = 0; i <= maxlenn+1; i++) Nat += "-";
+		for (int i = 0; i <= maxlens; i++) Sct += "-";
+		cout << Not<< "+"
+			<< Nat << "+"
+			<< Sct << endl;
+		for (int i = 0; i < n; i++)
+		{
+			cout <<setw(maxleno+1)<< students[i].No<<"| "
+				 <<setw(maxlenn+1)<<students[i].Name<<"| "
+				 <<setw(maxlens+1)<< students[i].Score << endl;
+		}
+		cout << endl;
+		cout << "学生总分为：" << ramDataPack[1].Data.Integer << endl;
+		cout << "学生平均分为：" << ramDataPack[2].Data.Double << endl;
+	}
+	StudentSort()
+	{
+		inputInfo = { 10,TypeOfData::Address };
 	}
 };

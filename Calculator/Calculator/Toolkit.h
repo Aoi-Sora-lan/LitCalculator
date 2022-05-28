@@ -7,6 +7,12 @@ struct Node
 	Node* NextNode;
 	Node(int x) :Data(x), NextNode(NULL) {}
 };
+struct Student
+{
+	int No;
+	char Name[255];
+	int Score;
+};
 struct LinkedList 
 {
 	Node HeadNode;
@@ -92,7 +98,7 @@ union UniData
 	double Double;
 	int Error;
 	bool Boolean;
-	void* StartNode;
+	void* Address;
 };
 enum class TypeOfData
 {
@@ -101,7 +107,7 @@ enum class TypeOfData
 	Double,
 	ERROR,
 	Boolean,
-	Addrress,
+	Address,
 	Empty
 };
 static class ErrorType

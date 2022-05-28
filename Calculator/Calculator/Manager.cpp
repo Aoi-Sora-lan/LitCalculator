@@ -89,7 +89,7 @@ void Manager::DealStrategy(CalculateType kind)
 		break;
 	}
 	case CalculateType::StudentSort: {
-		strategy = new TriCount();
+		strategy = new StudentSort();
 		break;
 	}
 	case CalculateType::StudentUp: {

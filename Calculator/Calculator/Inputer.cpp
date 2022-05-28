@@ -45,6 +45,18 @@ DataPack* Inputer::InputPack(int length, TypeOfData type)
 			}
 		}
 	}
+	else if (type == TypeOfData::Address)
+	{
+		UniData data;
+		Student* students = new Student[length]();
+		for (int i = 0; i < length; i++)
+		{
+
+			cin >> students[i].No >> students[i].Name >> students[i].Score;
+		}
+		data.Address = students;
+		inputerRam[0] = Toolkit::GenPack(data, TypeOfData::Address);
+	}
 	else if(type==TypeOfData::Characters)
 	{
 		string str;
@@ -58,6 +70,7 @@ DataPack* Inputer::InputPack(int length, TypeOfData type)
 		}
 		inputerRam[0] = Toolkit::GenPack(data, TypeOfData::Characters);
 	}
+	
 	return inputerRam;
 }
 
