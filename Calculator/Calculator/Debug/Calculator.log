@@ -1,4 +1,4 @@
-﻿  MainSource.cpp
+﻿  Inputer.cpp
 D:\ProjectItems\C++Items\LitCalculator\Calculator\Calculator\Toolkit.h(121,2): warning C4091: “static ”: 没有声明变量时忽略“ErrorType”的左侧
 D:\ProjectItems\C++Items\LitCalculator\Calculator\Calculator\Toolkit.h(132,2): warning C4091: “static ”: 没有声明变量时忽略“Toolkit”的左侧
   Calculator.vcxproj -> D:\ProjectItems\C++Items\LitCalculator\Calculator\Debug\Calculator.exe

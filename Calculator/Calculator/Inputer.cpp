@@ -25,7 +25,6 @@ DataPack* Inputer::InputPack(int length, TypeOfData type)
 			}
 			else
 			{
-				int temp;
 				for (int i = 0; i < length; i++)
 				{
 					UniData data;
@@ -36,7 +35,6 @@ DataPack* Inputer::InputPack(int length, TypeOfData type)
 		}
 		else
 		{
-			double temp;
 			for (int i = 0; i < length; i++)
 			{
 				UniData data;
