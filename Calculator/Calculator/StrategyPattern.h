@@ -462,7 +462,7 @@ public:
 		for (int i = 100; i < 1000; i++)
 		{
 			string numstr = to_string(i);
-			jg = pow(numstr[0] - '0', 3) + pow(numstr[1] - '0', 3) + pow(numstr[2] - '0', 3);
+			jg = (int)pow(numstr[0] - '0', 3) + (int)pow(numstr[1] - '0', 3) + (int)pow(numstr[2] - '0', 3);
 			if (i == jg)
 			{
 				data.Integer = i;
